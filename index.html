@@ -28,7 +28,7 @@
           })
 
           const loginWithCallback = async () => {
-            await auth0.loginWithRedirect()
+            await client.loginWithRedirect()
           }
 
           window.addEventListener('load', async () => {
