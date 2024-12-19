@@ -11,11 +11,19 @@
     </p>
     <script>
       ;(async function(){
+          if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("service_worker.js").then(function(registration) {
+              console.log("ServiceWorker:", registration.scope);
+            }).catch(function(err) {
+              console.log("ServiceWorker::", err);
+            })
+          }
+          
           const client = await auth0.createAuth0Client({
             domain: "auth.flyingsobamonster.com",
             clientId: "wa2IqVtqAoycqyGF7SzNvDxODZ61v7Nz",
             authorizationParams: {
-              redirect_uri: ""
+              redirect_uri: "https://sfjt.github.io/pwa-test/"
             }
           })
 
