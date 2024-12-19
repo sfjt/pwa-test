@@ -34,10 +34,10 @@
 
           window.addEventListener('load', async () => {
             const redirectResult = await client.handleRedirectCallback()
-            const user = await client.getUser();
-            console.log(user);
+            const user = await client.getUser()
+            console.log(user)
             if(user) {
-              const result = `Logged in: ${user}`
+              const result = `Logged in: ${user.email}`
               document.querySelector("#result").appendChild(document.createTextNode(result))
             }
           })
