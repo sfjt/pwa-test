@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <link rel="manifest" href="manifest.json">
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/2.1/auth0-spa-js.production.js"></script>
+    <title>PWA Test</title>
+  </head>
+  <body>
+    <h1>PWA Test</h1>
+    <p>
+      <button id="login">Login with callback</button>
+    </p>
+    <script>
+      ;(async function(){
+          const client = await auth0.createAuth0Client({
+            domain: "auth.flyingsobamonster.com",
+            clientId: "wa2IqVtqAoycqyGF7SzNvDxODZ61v7Nz",
+            authorizationParams: {
+              redirect_uri: ""
+            }
+          })
+
+          const loginWithCallback = async () => {
+            await auth0.loginWithRedirect()
+          }
+
+          window.addEventListener('load', async () => {
+            const redirectResult = await client.handleRedirectCallback()
+            const user = await client.getUser();
+            console.log(user);
+          })
+
+          document.querySelector("#login").addEventListener("click", loginWithCallback)
+        })()
+    </script>
+  </body>
+</html>
