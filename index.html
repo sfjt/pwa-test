@@ -9,6 +9,7 @@
     <p>
       <button id="login">Login with callback</button>
     </p>
+    <p id="result"></p>
     <script>
       ;(async function(){
           if ("serviceWorker" in navigator) {
@@ -35,6 +36,10 @@
             const redirectResult = await client.handleRedirectCallback()
             const user = await client.getUser();
             console.log(user);
+            if(user) {
+              const result = `Logged in: ${user}`
+              document.querySelector("#reqult").appendChild(document.createTextNode(result))
+            }
           })
 
           document.querySelector("#login").addEventListener("click", loginWithCallback)
