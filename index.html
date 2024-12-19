@@ -37,7 +37,7 @@
             const user = await client.getUser()
             console.log(user)
             if(user) {
-              const result = `Logged in: ${user.email}`
+              const result = `Logged in: ${user.name}`
               document.querySelector("#result").appendChild(document.createTextNode(result))
             }
           })
