@@ -7,7 +7,8 @@
   <body>
     <h1>PWA Test</h1>
     <p>
-      <button id="login">Login with callback</button>
+      <button id="loginwithredirect">Login with redirect</button>
+      <button id="loginwithpopup">Login with popup</button>
     </p>
     <p id="result"></p>
     <script>
@@ -28,8 +29,12 @@
             }
           })
 
-          const loginWithCallback = async () => {
+          const handleLoginWithRedirect = async () => {
             await client.loginWithRedirect()
+          }
+
+          const handleLoginWithPopup = async() => {
+            await client.loginWithPopup()
           }
 
           window.addEventListener('load', async () => {
@@ -42,7 +47,8 @@
             }
           })
 
-          document.querySelector("#login").addEventListener("click", loginWithCallback)
+          document.querySelector("#loginwithredirect").addEventListener("click", handleLoginWithRedirect)
+          document.querySelector("#loginwithpopup").addEventListener("click", handleLoginWithPopup)
         })()
     </script>
   </body>
